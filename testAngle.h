@@ -67,10 +67,10 @@ public:
       test_setDegrees_negativeLap();
 
       // display
-      //test_display_0();
-      //test_display_90();
-      //test_display_180();
-      //test_display_359();
+      test_display_0();
+      test_display_90();
+      test_display_180();
+      test_display_359();
 
 
 
@@ -318,7 +318,7 @@ private:
       a.radians = 99.9;
       double result;
       // exercise
-      result = a.convertToDegrees(-10 * 3.1415926 + 3.1415926 / 2.0);  // -3PI/2 
+      result = a.convertToDegrees(-10 * 3.1415926 + 3.1415926 / 2.0); 
       // verify
       assertValues(result, 90.0, 0.001);
       assertValues(a.radians, 99.9, 0.001);
@@ -331,7 +331,7 @@ private:
       a.radians = 99.9;
       double result;
       // exercise
-      result = a.convertToDegrees(10 * 3.1415926 - 3.1415926 / 2.0);  // -3PI/2 
+      result = a.convertToDegrees(10 * 3.1415926 - 3.1415926 / 2.0);  
       // verify
       assertValues(result, 270.0, 0.001);
       assertValues(a.radians, 99.9, 0.001);
