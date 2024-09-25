@@ -1,6 +1,6 @@
 /*************************************************************
  * 1. Name:
- *      Jackson Clarke
+ *      Jackson Clarke and Tyler Phillips
  * 2. Assignment Name:
  *      Practice 03: Angle Class
  * 3. Assignment Description:
