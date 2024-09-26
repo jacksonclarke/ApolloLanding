@@ -17,10 +17,7 @@
 #define TWO_PI 6.28318530718
 #define _USE_MATH_DEFINES // for M_PI
 
-#include <math.h>    // for floor()
 #include <iostream>  // for cout
-#include <cassert>   // for assert()
-#include <cmath>     // for normalization
 using namespace std;
 
 class TestAngle;
@@ -34,27 +31,52 @@ class Angle
    double radians;
 
 public:
-	
+	/************************************
+	* Get Degrees
+	* Recieves no paramenters.
+	* Returns the value of radians as degrees, normalized.
+	************************************/
 	double getDegrees() 
 	{
 		return convertToDegrees(radians);
 	}
 
+	/************************************
+	* Get Radians
+	* Recieves no paramenters.
+	* Returns the value of radians.
+	************************************/
 	double getRadians() 
 	{
 		return radians;
 	}
 
+	/************************************
+	* Set Degrees
+	* Recieves the degrees as a double.
+	* Converts degrees to normalized radians, and sets it as radians.
+	* Returns nothing.
+	************************************/
 	void setDegrees(double degrees)
 	{
 		radians = normalize(convertToRadians(degrees));
 	}
 
+	/************************************
+	* Set Radians
+	* Recieves the radians as a double, normalizes it, and sets it as radians.
+	* Returns nothing.
+	************************************/
 	void setRadians(double rad)
 	{
 		radians = normalize(rad);
 	}
 
+	/************************************
+	* Display
+	* Prints the radians in the form of degrees to the out iostream, followed by "degrees".
+	* Returns nothing.
+	************************************/
 	void display(ostream& out)
 	{
 		out.setf(ios::fixed);     // "fixed" means don't use scientific notation
@@ -64,15 +86,26 @@ public:
 	}
 
 private:
-
+	/************************************
+	* Normalize
+	* Recieves some amount of radians as a double.
+	* Truncates the radian value and expresses it in its simplest form. (0 < x < 2pi)
+	* Returns the normalized radians.
+	************************************/
 	double normalize(double rad)
 	{
-		rad = fmod(rad, TWO_PI);
-		if (rad < 0)
-			rad = rad + TWO_PI;
+		rad = fmod(rad, TWO_PI); // Sets rad as the remainder of radians / 2pi, which can be positive or negative.
+		if (rad < 0) 
+			rad = rad + TWO_PI; // Makes negative radians positive while preserving their position on the unit circle.
 		return rad;
 	}
 
+	/************************************
+	* Radians to Degrees
+	* Recieves some amount of radians as a double.
+	* Normalizes the radians and multiplies them by 180 / pi to get degrees.
+	* Returns the normalized degrees.
+	************************************/
 	double convertToDegrees(double rad)
 	{
 		double degrees;
@@ -80,6 +113,12 @@ private:
 		return degrees * (180 / M_PI);
 	}
 
+	/************************************
+	* Degrees to Radians
+	* Recieves some amount of degrees as a double.
+	* Multiplies it by pi / 180 to get radians and normalizes it.
+	* Returns the normalized radians.
+	************************************/
 	double convertToRadians(double degrees)
 	{
 		double rad;
@@ -87,5 +126,4 @@ private:
 		rad = normalize(rad);
 		return rad;
 	}
-
 };
